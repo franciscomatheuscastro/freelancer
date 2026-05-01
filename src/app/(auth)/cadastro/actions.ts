@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/src/lib/prisma";
+import { Prisma } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";
 
@@ -27,7 +28,7 @@ export async function cadastrarUsuario(formData: FormData) {
 
   const senhaHash = await bcrypt.hash(senha, 10);
 
-  await prisma.$transaction(async (tx) => {
+  await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
     const usuario = await tx.usuario.create({
       data: {
         nome,
