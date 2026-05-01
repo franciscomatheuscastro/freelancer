@@ -51,7 +51,7 @@ export default async function InteressadosPage() {
         </div>
       ) : (
         <div className="grid gap-4">
-          {contatos.map((item) => (
+          {contatos.map((item: any) => (
             <div
               key={item.id}
               className="rounded-2xl bg-white p-6 shadow"
