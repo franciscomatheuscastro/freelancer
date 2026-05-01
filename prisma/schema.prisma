@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TipoUsuario {
+  ADMIN
+  CLIENTE
+  FREELANCER
+}
+
+enum StatusServico {
+  ABERTO
+  EM_ANDAMENTO
+  CONCLUIDO
+  CANCELADO
+}
+
+enum TipoTransacaoToken {
+  COMPRA
+  USO
+  BONUS
+  ESTORNO
+}
+
+model Usuario {
+  id       String      @id @default(cuid())
+  nome     String
+  email    String      @unique
+  senha    String
+  whatsapp String?
+  tipo     TipoUsuario @default(CLIENTE)
+  criadoEm DateTime    @default(now())
+
+  perfilFreelancer PerfilFreelancer?
+
+  servicosCriados Servico[] @relation("ClienteServicos")
+  propostas       Proposta[] @relation("FreelancerPropostas")
+
+  carteiraToken    CarteiraToken?
+  contatosLiberados ContatoLiberado[]
+  transacoesToken   TransacaoToken[]
+}
+
+model PerfilFreelancer {
+  id           String   @id @default(cuid())
+  usuarioId   String   @unique
+  titulo       String
+  bio          String
+  habilidades  String[]
+  valorHora    Decimal?
+  cidade       String?
+  estado       String?
+  criadoEm     DateTime @default(now())
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+}
+
+model Servico {
+  id          String        @id @default(cuid())
+  clienteId  String
+  titulo      String
+  descricao   String
+  orcamento   Decimal?
+  status      StatusServico @default(ABERTO)
+  custoTokens Int           @default(1)
+  criadoEm    DateTime      @default(now())
+
+  cliente Usuario @relation("ClienteServicos", fields: [clienteId], references: [id], onDelete: Cascade)
+
+  propostas         Proposta[]
+  contatosLiberados ContatoLiberado[]
+}
+
+model Proposta {
+  id           String   @id @default(cuid())
+  servicoId    String
+  freelancerId String
+  valor        Decimal
+  mensagem     String
+  prazoDias    Int
+  criadaEm     DateTime @default(now())
+
+  servico    Servico @relation(fields: [servicoId], references: [id], onDelete: Cascade)
+  freelancer Usuario @relation("FreelancerPropostas", fields: [freelancerId], references: [id], onDelete: Cascade)
+}
+
+model CarteiraToken {
+  id        String @id @default(cuid())
+  usuarioId String @unique
+  saldo     Int    @default(0)
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
+
+model ContatoLiberado {
+  id           String @id @default(cuid())
+  usuarioId    String
+  servicoId    String
+  tokensGastos Int    @default(1)
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  servico Servico @relation(fields: [servicoId], references: [id], onDelete: Cascade)
+
+  criadoEm DateTime @default(now())
+
+  @@unique([usuarioId, servicoId])
+}
+
+model TransacaoToken {
+  id         String              @id @default(cuid())
+  usuarioId String
+  tipo       TipoTransacaoToken
+  quantidade Int
+  descricao  String?
+  criadoEm   DateTime            @default(now())
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+}
