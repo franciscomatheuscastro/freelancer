@@ -62,7 +62,7 @@ export default async function FreelancersPublicosPage() {
           </div>
         ) : (
           <div className="grid gap-5 md:grid-cols-2">
-            {freelancers.map((perfil) => (
+            {freelancers.map((perfil: any) => (
               <article
                 key={perfil.id}
                 className="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"
@@ -80,7 +80,7 @@ export default async function FreelancersPublicosPage() {
                 </p>
 
                 <div className="mt-3 flex flex-wrap gap-2">
-                  {perfil.habilidades.map((habilidade, index) => (
+                  {perfil.habilidades.map((habilidade: any, index: any) => (
                     <span
                       key={index}
                       className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-[#006BFF]"

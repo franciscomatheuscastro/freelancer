@@ -74,7 +74,7 @@ export default async function ServicosPublicosPage() {
           </div>
         ) : (
           <div className="grid gap-5">
-            {servicos.map((servico) => (
+            {servicos.map((servico: any) => (
               <article
                 key={servico.id}
                 className="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"
