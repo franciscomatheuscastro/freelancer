@@ -50,7 +50,7 @@ export default async function ContatosLiberadosPage() {
         </div>
       ) : (
         <div className="grid gap-4">
-          {contatos.map((item) => {
+          {contatos.map((item: any) => {
             const whatsapp = item.servico.cliente.whatsapp;
 
             return (
