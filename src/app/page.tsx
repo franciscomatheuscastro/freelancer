@@ -29,7 +29,7 @@ export default async function HomePage() {
 
   return (
     <HomePrincipal
-      freelancers={freelancers.map((f) => ({
+      freelancers={freelancers.map((f: any) => ({
         id: f.id,
         nome: f.usuario.nome,
         titulo: f.titulo,
