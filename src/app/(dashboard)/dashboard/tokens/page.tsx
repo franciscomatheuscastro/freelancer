@@ -130,7 +130,7 @@ export default async function TokensPage() {
                 Nenhuma transação registrada ainda.
               </p>
             ) : (
-              transacoes.map((transacao) => (
+              transacoes.map((transacao: any) => (
                 <div
                   key={transacao.id}
                   className="flex items-center justify-between rounded-xl bg-zinc-50 p-4"

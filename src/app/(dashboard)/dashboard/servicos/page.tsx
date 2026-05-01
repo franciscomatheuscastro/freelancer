@@ -71,7 +71,7 @@ export default async function ServicosPage() {
         </div>
       ) : (
         <div className="grid gap-4">
-          {servicos.map((servico) => {
+          {servicos.map((servico: any) => {
             const contatoLiberado = servico.contatosLiberados.length > 0;
 
             return (
