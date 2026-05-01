@@ -38,7 +38,7 @@ export default async function HomePage() {
         cidade: f.cidade,
         estado: f.estado,
       }))}
-      servicos={servicos.map((s) => ({
+      servicos={servicos.map((s: any) => ({
         id: s.id,
         titulo: s.titulo,
         descricao: s.descricao,
