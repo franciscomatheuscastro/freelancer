@@ -115,12 +115,15 @@ model ContatoLiberado {
 }
 
 model TransacaoToken {
-  id         String              @id @default(cuid())
-  usuarioId String
-  tipo       TipoTransacaoToken
-  quantidade Int
-  descricao  String?
-  criadoEm   DateTime            @default(now())
+  id              String              @id @default(cuid())
+  usuarioId       String
+  tipo            TipoTransacaoToken
+  quantidade      Int
+  descricao       String?
+  stripeSessionId String?             @unique
+  criadoEm        DateTime            @default(now())
 
   usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@index([usuarioId])
 }
