@@ -101,7 +101,7 @@ export default async function PerfilPage() {
             name="nome"
             defaultValue={usuario.nome}
             required
-            className="mt-1 w-full rounded-lg border px-4 py-3 outline-none focus:border-[#006BFF]"
+            className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-[#071B33] placeholder:text-zinc-400 outline-none focus:border-[#006BFF] focus:ring-2 focus:ring-blue-100"
           />
         </div>
 
@@ -121,7 +121,7 @@ export default async function PerfilPage() {
             defaultValue={usuario.whatsapp ?? ""}
             placeholder="Ex: 65999999999"
             required
-            className="mt-1 w-full rounded-lg border px-4 py-3 outline-none focus:border-[#006BFF]"
+            className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-[#071B33] placeholder:text-zinc-400 outline-none focus:border-[#006BFF] focus:ring-2 focus:ring-blue-100"
           />
         </div>
 
@@ -144,7 +144,7 @@ export default async function PerfilPage() {
               <input
                 name="titulo"
                 defaultValue={perfil?.titulo ?? ""}
-                className="mt-1 w-full rounded-lg border px-4 py-3 outline-none focus:border-[#006BFF]"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-[#071B33] placeholder:text-zinc-400 outline-none focus:border-[#006BFF] focus:ring-2 focus:ring-blue-100"
                 placeholder="Ex: Desenvolvedor Full Stack"
               />
             </div>
@@ -158,7 +158,7 @@ export default async function PerfilPage() {
                 name="bio"
                 defaultValue={perfil?.bio ?? ""}
                 rows={4}
-                className="mt-1 w-full rounded-lg border px-4 py-3 outline-none focus:border-[#006BFF]"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-[#071B33] placeholder:text-zinc-400 outline-none focus:border-[#006BFF] focus:ring-2 focus:ring-blue-100"
                 placeholder="Conte brevemente sua experiência..."
               />
             </div>
@@ -171,7 +171,7 @@ export default async function PerfilPage() {
               <input
                 name="habilidades"
                 defaultValue={perfil?.habilidades?.join(", ") ?? ""}
-                className="mt-1 w-full rounded-lg border px-4 py-3 outline-none focus:border-[#006BFF]"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-[#071B33] placeholder:text-zinc-400 outline-none focus:border-[#006BFF] focus:ring-2 focus:ring-blue-100"
                 placeholder="React, Node.js, Design, Marketing"
               />
             </div>
@@ -185,7 +185,7 @@ export default async function PerfilPage() {
                 <input
                   name="cidade"
                   defaultValue={perfil?.cidade ?? ""}
-                  className="mt-1 w-full rounded-lg border px-4 py-3 outline-none focus:border-[#006BFF]"
+                  className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-[#071B33] placeholder:text-zinc-400 outline-none focus:border-[#006BFF] focus:ring-2 focus:ring-blue-100"
                 />
               </div>
 
@@ -197,7 +197,7 @@ export default async function PerfilPage() {
                 <input
                   name="estado"
                   defaultValue={perfil?.estado ?? ""}
-                  className="mt-1 w-full rounded-lg border px-4 py-3 outline-none focus:border-[#006BFF]"
+                  className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-[#071B33] placeholder:text-zinc-400 outline-none focus:border-[#006BFF] focus:ring-2 focus:ring-blue-100"
                 />
               </div>
             </div>
